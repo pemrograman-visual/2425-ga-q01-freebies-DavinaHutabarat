@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="X01-PAIR28-FREEBIES"/>
+        <attribute name="authors" value="User"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-09 04:19:25 PM"/>
+        <attribute name="created" value="VXNlcjtMQVBUT1AtMENFUEdBQUg7MjAyNC0xMC0wOTswMzowMzo1NyBQTTsyNzQx"/>
+        <attribute name="edited" value="VXNlcjtMQVBUT1AtMENFUEdBQUg7MjAyNC0xMC0wOTswNDoxOToyNSBQTTsyOzI4NTM="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="HargaBuku, JumlahBuku, HargaPalingKecil, TotalTransaksi, TransaksiAkhir, TotalHarga" type="Real" array="False" size=""/>
+            <input variable="HargaBuku"/>
+            <assign variable="TotalHarga" expression="HargaBuku"/>
+            <assign variable="HargaPalingKecil" expression="HargaBuku"/>
+            <while expression="HargaBuku!=0">
+                <if expression="HargaPalingKecil&lt;HargaBuku">
+                    <then>
+                        <assign variable="HargaPalingKecil" expression="HargaPalingKecil"/>
+                    </then>
+                    <else>
+                        <assign variable="HargaPalingKecil" expression="HargaBuku"/>
+                    </else>
+                </if>
+                <input variable="HargaBuku"/>
+                <assign variable="TotalHarga" expression="TotalHarga+HargaBuku"/>
+            </while>
+            <if expression="TotalHarga&gt;=100">
+                <then>
+                    <assign variable="TotalTransaksi" expression="TotalHarga-HargaPalingKecil"/>
+                </then>
+                <else>
+                    <assign variable="TotalTransaksi" expression="TotalHarga"/>
+                </else>
+            </if>
+            <output expression="ToFixed(TotalTransaksi,2)" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
